@@ -26,9 +26,30 @@ function saveRecord(record) {
 }
 
 function uploadBudget() {
-    
-    const transaction = db.transaction(["new_budget"], "readwrite");
-  
-    const store = transaction.objectStore("new_budget");
-  
-    const getEverything = store.getAll();
+  const transaction = db.transaction(["new_budget"], "readwrite");
+
+  const store = transaction.objectStore("new_budget");
+
+  const getEverything = store.getAll();
+
+  getEverything.onsuccess = function () {
+    if (getEverything.result.length > 0) {
+      fetch("/api/transaction", {
+        method: "POST",
+        body: JSON.stringify(getEverything.result),
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then(() => {
+          const transaction = db.transaction(["new_budget"], "readwrite");
+
+          const store = transaction.objectStore("new_budget");
+
+          store.clear();
+        });
+    }
+  };
+}
