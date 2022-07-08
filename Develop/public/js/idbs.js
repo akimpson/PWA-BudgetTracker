@@ -7,4 +7,20 @@ request.onupgradeneeded = function (event) {
 };
 
 request.onsuccess = function (event) {
-    db = event.target.result;
+  db = event.target.result;
+
+  if (navigator.onLine) {
+    uploadBudget();
+  }
+};
+
+request.onerror = function (event) {
+  console.log("Error:" + event.target.errorCode);
+};
+
+function saveRecord(record) {
+  const transaction = db.transaction(["new_budget"], "readwrite");
+
+  const budgetObjectStore = transaction.objectStore("new_budget");
+  budgetObjectStore.add(record);
+}
