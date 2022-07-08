@@ -24,3 +24,11 @@ function saveRecord(record) {
   const budgetObjectStore = transaction.objectStore("new_budget");
   budgetObjectStore.add(record);
 }
+
+function uploadBudget() {
+    
+    const transaction = db.transaction(["new_budget"], "readwrite");
+  
+    const store = transaction.objectStore("new_budget");
+  
+    const getEverything = store.getAll();
