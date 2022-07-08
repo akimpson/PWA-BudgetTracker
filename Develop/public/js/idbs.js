@@ -53,3 +53,11 @@ function uploadBudget() {
     }
   };
 }
+function deleteInProgress() {
+  const transaction = db.transaction(["new_budget"], "readwrite");
+
+  const store = transaction.objectStore("new_budget");
+  store.clear();
+}
+
+window.addEventListener("online", uploadBudget);
