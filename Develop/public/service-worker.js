@@ -1,5 +1,8 @@
+// Cache name
 const CACHE_NAME = "my-budget";
+// Data Cache name
 const DATA_CACHE_NAME = "budget-data-cache";
+// Files to cache
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
