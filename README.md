@@ -12,3 +12,7 @@
 - JavaScript
 - Mongoose
 - Morgan
+
+## Installation
+
+Use npm i to install the npm packages.
