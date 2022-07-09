@@ -4,11 +4,11 @@
 
 - This budget tracker application will allow users to add expenses and deposits to their budget.
 
-**Technology Used:**
+## Technology
 
-- Mongoose
-- JavaScript
-- HTML
 - CSS
-- Morgan
 - Express.js
+- HTML
+- JavaScript
+- Mongoose
+- Morgan
